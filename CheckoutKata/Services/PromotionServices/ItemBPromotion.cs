@@ -4,15 +4,15 @@ namespace CheckoutKata.Services.PromotionServices
 {
     public class ItemBPromotion : Promotions, IPromotions
     {
-        public ItemBPromotion(string item, int basePrice, string promotionDescription, int qty) : base(item, basePrice, promotionDescription, qty)
+        public ItemBPromotion(string item, double basePrice, string promotionDescription, int qty) : base(item, basePrice, promotionDescription, qty)
         {
         }
 
-        public override int ApplyPromotions(int qty)
+        public override double ApplyPromotions(int qty)
         {
             var totalPromotions = qty / TriggerQty;
             var remainder = qty % TriggerQty;
-            var totalPrice = 0;
+            var totalPrice = 0.00;
 
             for (var i = 0; i < totalPromotions; i++)
             {

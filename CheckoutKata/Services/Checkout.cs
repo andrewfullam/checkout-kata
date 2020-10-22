@@ -60,7 +60,7 @@ namespace CheckoutKata.Services
             }
         }
 
-        public int GetTotal() => _checkoutItems.Sum(c => c.Price);
+        public double GetTotal() => _checkoutItems.Sum(c => c.Price);
 
         public List<CheckoutItem> GetCheckout()
         {

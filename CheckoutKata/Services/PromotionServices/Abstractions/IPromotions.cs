@@ -2,7 +2,7 @@
 {
     public interface IPromotions
     {
-        int ApplyPromotions(int qty);
+        double ApplyPromotions(int qty);
 
         string GetItem(string itemName);
 

@@ -6,7 +6,7 @@ namespace CheckoutKata.Services.Abstractions
     public interface ICheckout
     {
         void AddToCheckout(string item);
-        int GetTotal();
+        double GetTotal();
         List<CheckoutItem> GetCheckout();
     }
 }

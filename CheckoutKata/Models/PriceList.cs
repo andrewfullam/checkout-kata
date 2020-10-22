@@ -4,6 +4,6 @@
     {
         public string Item { get; set; }
 
-        public int Price { get; set; }
+        public double Price { get; set; }
     }
 }

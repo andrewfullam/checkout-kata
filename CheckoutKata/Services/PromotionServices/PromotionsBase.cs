@@ -1,18 +1,19 @@
-﻿using System;
+﻿using CheckoutKata.Services.PromotionServices.Abstractions;
+using System;
 
 namespace CheckoutKata.Services.PromotionServices
 {
-    public class Promotions
+    public class Promotions : IPromotions
     {
         protected readonly string Item;
 
-        protected readonly int BasePrice;
+        protected readonly double BasePrice;
 
         protected readonly string PromotionDescription;
 
         protected readonly int TriggerQty;
 
-        public Promotions(string item, int basePrice, string promotionDescription, int triggerQty)
+        public Promotions(string item, double basePrice, string promotionDescription, int triggerQty)
         {
             Item = item;
             BasePrice = basePrice;
@@ -20,7 +21,7 @@ namespace CheckoutKata.Services.PromotionServices
             TriggerQty = triggerQty;
         }
 
-        public virtual int ApplyPromotions(int qty)
+        public virtual double ApplyPromotions(int qty)
         {
             throw new NotImplementedException();
         }

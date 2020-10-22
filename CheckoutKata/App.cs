@@ -93,7 +93,6 @@ namespace CheckoutKata
                 var fullFooter = $"{footer} Total      {checkoutTotal}      \n{footer}";
 
                 _renderService.RenderOutputList(checkoutItems, header, fullFooter);
-
             }
         }
     }
