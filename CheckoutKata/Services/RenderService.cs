@@ -1,15 +1,13 @@
-﻿using System;
+﻿using CheckoutKata.Services.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 
 namespace CheckoutKata.Services
 {
-    public class RenderService<T>
+    public class RenderService<T> : IRenderService<T>
     {
-        public string header = "---------------------------------\n CHECKOUT \n---------------------------------\n";
-        public string footer = "---------------------------------";
-
-        public void RenderOutputList(List<T> renderList)
+        public void RenderOutputList(List<T> renderList, string header, string footer)
         {
             var output = header;
 

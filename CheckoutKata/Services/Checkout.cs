@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace CheckoutKata.Services
 {
-    public class Checkout
+    public class Checkout : ICheckout
     {
         public List<CheckoutItem> _checkoutItems = new List<CheckoutItem>();
         private List<PriceList> _priceList;
@@ -58,6 +58,8 @@ namespace CheckoutKata.Services
                 });
             }
         }
+
+        public int GetTotal() => _checkoutItems.Sum(c => c.Price);
 
         public List<CheckoutItem> GetCheckout()
         {

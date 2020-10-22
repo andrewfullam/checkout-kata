@@ -8,8 +8,11 @@ namespace CheckoutKata
 {
     class App
     {
-        private readonly Checkout _checkout;
-        private readonly RenderService<CheckoutItem> _renderService = new RenderService<CheckoutItem>();
+        private readonly ICheckout _checkout;
+        private readonly IRenderService<CheckoutItem> _renderService = new RenderService<CheckoutItem>();
+
+        public string header = "---------------------------------\n CHECKOUT \n---------------------------------\n";
+        public string footer = "---------------------------------";
 
         public App()
         {
@@ -58,7 +61,9 @@ namespace CheckoutKata
 
             var checkoutItems = _checkout.GetCheckout();
 
-            _renderService.RenderOutputList(_checkout.GetCheckout());
+            var checkoutTotal = _checkout.GetTotal();
+
+            _renderService.RenderOutputList(_checkout.GetCheckout(), header, footer);
         }
     }
 }
