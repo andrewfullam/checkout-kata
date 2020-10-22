@@ -5,6 +5,8 @@
         static void Main(string[] args)
         {
             var App = new App();
+
+            App.Run();
         }
     }
 }

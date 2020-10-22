@@ -1,5 +1,7 @@
 ﻿using CheckoutKata.Models;
 using CheckoutKata.Services;
+using CheckoutKata.Services.PromotionServices;
+using CheckoutKata.Services.PromotionServices.Abstractions;
 using System.Collections.Generic;
 
 namespace CheckoutKata
@@ -35,19 +37,28 @@ namespace CheckoutKata
                 }
             };
 
-            var promotions = new List<PromotionsBaseClass>
+            var promotions = new List<IPromotions>
             {
-                new PromotionsBaseClass
-                {
-                    Item = "A",
-                    ApplyPromotion = () =>
-                    {
-
-                    }
-                }
-            }
+                new ItemBPromotion("B", priceList.Find(p => p.Item == "B").Price, "3 for 40", 3),
+                new ItemDPromotion("D", priceList.Find(p => p.Item == "D").Price, "25% off for every 2 purchased together", 2)
+            };
 
             _checkout = new Checkout(priceList, promotions);
+        }
+
+        public void Run()
+        {
+            _checkout.AddToCheckout("B");
+            _checkout.AddToCheckout("B");
+            _checkout.AddToCheckout("B");
+            _checkout.AddToCheckout("B");
+            _checkout.AddToCheckout("B");
+            _checkout.AddToCheckout("B");
+            _checkout.AddToCheckout("D");
+
+            var checkoutItems = _checkout.GetCheckout();
+
+            _renderService.RenderOutputList(_checkout.GetCheckout());
         }
     }
 }

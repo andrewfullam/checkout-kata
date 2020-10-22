@@ -22,15 +22,15 @@ namespace CheckoutKata.Services
 
                     if (type == typeof(string))
                     {
-                        outputLine = outputLine + prop.GetValue(prop, null);
+                        outputLine += prop.GetValue(prop, null);
                     }
 
-                    output = output + outputLine + "\n";
-                    output = output + "\n";
+                    output += outputLine + "\n";
+                    output += "\n";
                 }
             }
 
-            output = output + line;
+            output += line;
 
             Console.WriteLine(output);
         }
