@@ -6,14 +6,13 @@ namespace CheckoutKata.Services
     public class Checkout
     {
         public List<CheckoutItem> _checkoutItems = new List<CheckoutItem>();
-
         private PriceList _priceList;
-
-        private Promotions _promotions;
+        private PromotionsBaseClass _promotions;
+        private readonly RenderService<CheckoutItem> _renderService;
 
         public int CheckoutTotal = 0;
 
-        public Checkout(PriceList priceList, Promotions promotions)
+        public Checkout(PriceList priceList, PromotionsBaseClass promotions)
         {
             _priceList = priceList;
             _promotions = promotions;

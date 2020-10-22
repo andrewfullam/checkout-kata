@@ -1,14 +1,10 @@
-﻿using CheckoutKata.Services;
-
-namespace CheckoutKata
+﻿namespace CheckoutKata
 {
     public class Program
     {
-        Checkout Checkout = new Checkout();
-
         static void Main(string[] args)
         {
-
+            var App = new App();
         }
     }
 }
