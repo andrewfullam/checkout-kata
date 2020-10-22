@@ -11,7 +11,7 @@ namespace CheckoutKata
     class App
     {
         private readonly ICheckout _checkout;
-        private readonly IRender<CheckoutItem> _renderService = new Render<CheckoutItem>();
+        private readonly IRender _renderService = new Render();
 
         public App()
         {
@@ -92,7 +92,9 @@ namespace CheckoutKata
 
                 var fullFooter = $"{footer} Total      {checkoutTotal}      \n{footer}";
 
-                _renderService.RenderOutputList(checkoutItems, header, fullFooter);
+                var output = _renderService.GetRenderOutputListString<CheckoutItem>(checkoutItems, header, fullFooter);
+
+                Console.WriteLine(output);
             }
         }
     }

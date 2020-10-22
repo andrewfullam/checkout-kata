@@ -2,8 +2,8 @@
 
 namespace CheckoutKata.Services.Abstractions
 {
-    public interface IRender<T>
+    public interface IRender
     {
-        static void RenderOutputList(List<T> renderList, string header, string footer);
+        string GetRenderOutputListString<T>(List<T> renderList, string header, string footer);
     }
 }

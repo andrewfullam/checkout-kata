@@ -5,9 +5,9 @@ using System.Reflection;
 
 namespace CheckoutKata.Services
 {
-    public class Render<T> : IRender<T>
+    public class Render : IRender
     {
-        public static void RenderOutputList(List<T> renderList, string header, string footer)
+        public string GetRenderOutputListString<T>(List<T> renderList, string header, string footer)
         {
             var output = header;
 
@@ -42,7 +42,7 @@ namespace CheckoutKata.Services
 
             output += footer;
 
-            Console.WriteLine(output);
+            return output;
         }
     }
 }
