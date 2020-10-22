@@ -58,9 +58,8 @@ namespace CheckoutKata
             while (input != "exit")
             {
                 Console.WriteLine("\n\nAvailable items: \nA - Price: 10\nB - Price: 15\nC - Price: 40\nD - Price: 55\n");
-
-
                 Console.WriteLine("Please add an item to the checkout (type the corresponding letter to add it or exit to quit): ");
+
                 var selection = Console.ReadLine();
 
                 switch (selection)
@@ -92,7 +91,7 @@ namespace CheckoutKata
 
                 var fullFooter = $"{footer} Total      {checkoutTotal}      \n{footer}";
 
-                var output = _renderService.GetRenderOutputListString<CheckoutItem>(checkoutItems, header, fullFooter);
+                var output = _renderService.GetRenderOutputListString(checkoutItems, header, fullFooter);
 
                 Console.WriteLine(output);
             }
