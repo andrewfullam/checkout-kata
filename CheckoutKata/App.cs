@@ -11,7 +11,7 @@ namespace CheckoutKata
     class App
     {
         private readonly ICheckout _checkout;
-        private readonly IRenderService<CheckoutItem> _renderService = new RenderService<CheckoutItem>();
+        private readonly IRender<CheckoutItem> _renderService = new Render<CheckoutItem>();
 
         public App()
         {

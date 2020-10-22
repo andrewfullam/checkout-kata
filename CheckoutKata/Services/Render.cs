@@ -5,9 +5,9 @@ using System.Reflection;
 
 namespace CheckoutKata.Services
 {
-    public class RenderService<T> : IRenderService<T>
+    public class Render<T> : IRender<T>
     {
-        public void RenderOutputList(List<T> renderList, string header, string footer)
+        public static void RenderOutputList(List<T> renderList, string header, string footer)
         {
             var output = header;
 
@@ -26,6 +26,9 @@ namespace CheckoutKata.Services
                             outputLine += prop.GetValue(renderItem, null) + " | ";
                             break;
                         case TypeCode.Int32:
+                            outputLine += prop.GetValue(renderItem, null).ToString() + " | ";
+                            break;
+                        case TypeCode.Double:
                             outputLine += prop.GetValue(renderItem, null).ToString() + " | ";
                             break;
                         default:
