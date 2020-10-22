@@ -7,6 +7,9 @@ namespace CheckoutKata.Services
 {
     public class Render : IRender
     {
+        // Simple render string generator to output the console string. I made it generic for no other reason
+        // than to show I know how to use them. Makes this reusable for other collections. Uses reflection to loop
+        // through object properties
         public string GetRenderOutputListString<T>(List<T> renderList, string header, string footer)
         {
             var output = header;

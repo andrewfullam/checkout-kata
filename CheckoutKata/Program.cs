@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            StaticDependencies.Init();
             var App = new App();
 
             App.Run();
