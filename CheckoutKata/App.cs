@@ -57,7 +57,7 @@ namespace CheckoutKata
 
             while (input != "exit")
             {
-                Console.WriteLine("\n\n\nAvailable items: \n\n\nA - Price: 10\n\n\nB - Price: 15\n\n\nC - Price: 40\n\n\nD - Price: 55\n\n");
+                Console.WriteLine("\n\nAvailable items: \nA - Price: 10\nB - Price: 15\nC - Price: 40\nD - Price: 55\n");
 
 
                 Console.WriteLine("Please add an item to the checkout (type the corresponding letter to add it or exit to quit): ");
