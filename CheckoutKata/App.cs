@@ -1,7 +1,9 @@
 ﻿using CheckoutKata.Models;
 using CheckoutKata.Services;
+using CheckoutKata.Services.Abstractions;
 using CheckoutKata.Services.PromotionServices;
 using CheckoutKata.Services.PromotionServices.Abstractions;
+using System;
 using System.Collections.Generic;
 
 namespace CheckoutKata
@@ -10,9 +12,6 @@ namespace CheckoutKata
     {
         private readonly ICheckout _checkout;
         private readonly IRenderService<CheckoutItem> _renderService = new RenderService<CheckoutItem>();
-
-        public string header = "---------------------------------\n CHECKOUT \n---------------------------------\n";
-        public string footer = "---------------------------------";
 
         public App()
         {
@@ -51,19 +50,51 @@ namespace CheckoutKata
 
         public void Run()
         {
-            _checkout.AddToCheckout("B");
-            _checkout.AddToCheckout("B");
-            _checkout.AddToCheckout("B");
-            _checkout.AddToCheckout("B");
-            _checkout.AddToCheckout("B");
-            _checkout.AddToCheckout("B");
-            _checkout.AddToCheckout("D");
+            var header = "---------------------------------\n CHECKOUT \n---------------------------------\n";
+            var footer = "---------------------------------\n";
 
-            var checkoutItems = _checkout.GetCheckout();
+            var input = "";
 
-            var checkoutTotal = _checkout.GetTotal();
+            while (input != "exit")
+            {
+                Console.WriteLine("\n\n\nAvailable items: \n\n\nA - Price: 10\n\n\nB - Price: 15\n\n\nC - Price: 40\n\n\nD - Price: 55\n\n");
 
-            _renderService.RenderOutputList(_checkout.GetCheckout(), header, footer);
+
+                Console.WriteLine("Please add an item to the checkout (type the corresponding letter to add it or exit to quit): ");
+                var selection = Console.ReadLine();
+
+                switch (selection)
+                {
+                    case "A":
+                        _checkout.AddToCheckout("A");
+                        break;
+                    case "B":
+                        _checkout.AddToCheckout("B");
+                        break;
+                    case "C":
+                        _checkout.AddToCheckout("C");
+                        break;
+                    case "D":
+                        _checkout.AddToCheckout("D");
+                        break;
+                    case "exit":
+                        Environment.Exit(1);
+                        break;
+                    default:
+                        break;
+                }
+
+                Console.Clear();
+
+                var checkoutItems = _checkout.GetCheckout();
+
+                var checkoutTotal = _checkout.GetTotal();
+
+                var fullFooter = $"{footer} Total      {checkoutTotal}      \n{footer}";
+
+                _renderService.RenderOutputList(checkoutItems, header, fullFooter);
+
+            }
         }
     }
 }
