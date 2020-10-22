@@ -33,7 +33,7 @@ namespace CheckoutKata.Services
                 if (validPromotion != null)
                 {
                     checkoutItem.Price = validPromotion.ApplyPromotions(checkoutItem.Qty);
-                    checkoutItem.PromotionApplied = validPromotion.PromotionHit(checkoutItem.Qty) ? validPromotion.GetPromotionDescription(item) : "";
+                    checkoutItem.PromotionApplied = validPromotion.PromotionHit(checkoutItem.Qty) ? validPromotion.GetPromotionDescription(item) : "No promotion";
                 }
                 else
                 {
@@ -54,7 +54,7 @@ namespace CheckoutKata.Services
                     Item = item,
                     Price = priceListItem.Price,
                     Qty = 1,
-                    PromotionApplied = ""
+                    PromotionApplied = "No Promotion"
                 });
             }
         }

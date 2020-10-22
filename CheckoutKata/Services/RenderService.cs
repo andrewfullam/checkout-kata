@@ -6,31 +6,40 @@ namespace CheckoutKata.Services
 {
     public class RenderService<T>
     {
-        public string line = "-----------------------------------------------------------------\n";
+        public string header = "---------------------------------\n CHECKOUT \n---------------------------------\n";
+        public string footer = "---------------------------------";
 
         public void RenderOutputList(List<T> renderList)
         {
-            var output = line;
+            var output = header;
 
             foreach (var renderItem in renderList)
             {
-                foreach (PropertyInfo prop in renderList.GetType().GetProperties())
+                var outputLine = "";
+
+                foreach (PropertyInfo prop in renderItem.GetType().GetProperties())
                 {
-                    var outputLine = "";
 
                     var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
 
-                    if (type == typeof(string))
+                    switch (Type.GetTypeCode(type))
                     {
-                        outputLine += prop.GetValue(prop, null);
+                        case TypeCode.String:
+                            outputLine += prop.GetValue(renderItem, null) + " | ";
+                            break;
+                        case TypeCode.Int32:
+                            outputLine += prop.GetValue(renderItem, null).ToString() + " | ";
+                            break;
+                        default:
+                            break;
                     }
-
-                    output += outputLine + "\n";
-                    output += "\n";
                 }
+
+                output += outputLine + "\n";
+                output += "\n";
             }
 
-            output += line;
+            output += footer;
 
             Console.WriteLine(output);
         }
